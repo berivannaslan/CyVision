@@ -1,0 +1,29 @@
+# Sanal ortam
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Veri ve modeller (GitHub'a yüklenmez, boyutları büyük)
+data/raw/*
+data/processed/*
+models/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!models/.gitkeep
+
+# Çalıştırılabilir dosyalar (güvenlik için asla depoya girmesin)
+*.exe
+*.dll
+*.bin
+
+# Editör / işletim sistemi
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
