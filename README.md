@@ -18,20 +18,24 @@ malware-image-classification/
 ├── models/                # Eğitilmiş .joblib modeller (git'e girmez)
 ├── docs/
 │   ├── ilk_20_gun.md      # 6-25 Ekim görev dağılımı
+│   ├── hafta_4.md         # 26 Ekim-1 Kasım görev dağılımı
 │   └── literatur.md       # Okuma listesi ve özetler
 ├── notebooks/
 │   ├── 01_veri_inceleme.ipynb
-│   └── 02_donusturme_ve_onisleme.ipynb
+│   ├── 02_donusturme_ve_onisleme.ipynb
+│   └── 03_ozellik_cikarimi.ipynb
 ├── reports/figures/       # Rapora girecek grafikler
 ├── scripts/
 │   └── check_env.py       # Ortam kontrolü
 ├── src/
 │   ├── data_loader.py     # Veri setini listeleme, sınıf dağılımı, görüntü okuma
 │   ├── binary_to_image.py # Dosya byte'larını gri görüntüye çevirme (Nataraj 2011)
-│   └── preprocess.py      # Gri okuma + 256x256, tüm veri setini işleme
+│   ├── preprocess.py      # Gri okuma + 256x256, tüm veri setini işleme
+│   └── features.py        # LBP (59) + GLCM (24) = 83 boyutlu özellik vektörü
 └── tests/
     ├── test_data_loader.py
-    └── test_preprocess.py
+    ├── test_preprocess.py
+    └── test_features.py
 ```
 
 ## Kurulum (Windows)
@@ -81,13 +85,21 @@ python -m src.binary_to_image C:\Windows\System32\notepad.exe -o reports\figures
 python -m src.preprocess
 ```
 
+## Özellik çıkarımı
+
+```powershell
+# 83 boyutlu özellikler -> data/processed/features.csv (tüm çekirdeklerle ~2-3 dk)
+python -m src.features --n-jobs -1
+```
+
 ## Zaman planı
 
 | Hafta | İş paketi | Durum |
 |---|---|---|
 | 1–2 | Hazırlık, veri seti, veri inceleme | 🟡 Devam ediyor |
 | 3 | Binary'den görüntüye dönüştürme, ön işleme (256×256) | 🟡 Kod hazır, gerçek veriyle çalıştırılacak |
-| 4–5 | LBP + GLCM ile 83 boyutlu özellik vektörü, train/test bölme | ⬜ |
+| 4 | LBP + GLCM ile 83 boyutlu özellik vektörü | 🟡 Kod hazır, gerçek veriyle çalıştırılacak |
+| 5 | Train/test bölme, ölçeklendirme | ⬜ |
 | 6–8 | SVM, RF, KNN + GridSearchCV, ara rapor | ⬜ |
 | 9–10 | Değerlendirme, karışıklık matrisleri, özellik önemi | ⬜ |
 | 11 | Streamlit arayüzü | ⬜ |
