@@ -11,6 +11,7 @@ Zararlı yazılım dosyalarının byte'larını gri tonlamalı görüntülere d�
 ```
 malware-image-classification/
 ├── config.py              # Sabitler ve yollar (görüntü boyutu, LBP/GLCM parametreleri...)
+├── notlar.md              # Ölçümler, süreler, gözlemler
 ├── requirements.txt
 ├── data/
 │   ├── raw/               # Malimg buraya açılır (git'e girmez)
@@ -19,6 +20,7 @@ malware-image-classification/
 ├── docs/
 │   ├── ilk_20_gun.md      # 6-25 Ekim görev dağılımı
 │   ├── hafta_4.md         # 26 Ekim-1 Kasım görev dağılımı
+│   ├── toplantilar.md     # Haftalık toplantı notları
 │   └── literatur.md       # Okuma listesi ve özetler
 ├── notebooks/
 │   ├── 01_veri_inceleme.ipynb
